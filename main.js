@@ -36,7 +36,7 @@ function validateConfig() {
 }
 
 function main() {
-    console.log("API monitor developed by github.com/paranoiaz\n")
+    console.log("File monitor API developed by github.com/paranoiaz\n")
     console.log(`Config overview in JSON format, check the fields;\n${JSON.stringify(config)}`);
     console.log(`
                     Machine: ${os.hostname}
