@@ -32,3 +32,8 @@ Here is a quick explanation of the keys in the config file;
 ```
 
 The monitor file is a template file and can be located anywhere with any text in it as long as it is in json format. It is recommended to keep the _request_timestamp_ key as it is very useful to determine when the state was updated.
+
+Custom error codes:
+- ERROR ```100``` HTTP ```414``` - Multiple keys were provided, only provide a single key.
+- ERROR ```300``` HTTP ```401``` - Invalid API key provided, provide a valid key.
+- ERROR ```400``` HTTP ```404``` - No API key was provided, provide a key.
