@@ -1,0 +1,7 @@
+{
+    "filepath": "./monitor.json",
+    "endpoint": "/api/monitor",
+    "port": 25000,
+    "log": true,
+    "keys": false
+}
