@@ -20,7 +20,7 @@ Here is a quick explanation of the keys in the config file;
 - endpoint, the endpoint to retrieve the data, __/api/monitor__
 - port, the TCP port number, __20000__ - __40000__
 - log, enable or disable logging, __true__ or __false__
-- keys, enable or disable API keys (query parameter _key_), __true__ or __false__
+- keys, enable or disable API key usage (query parameter _key_), __true__ or __false__
 ```json
 {
     "filepath": "string",
