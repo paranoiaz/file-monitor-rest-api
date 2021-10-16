@@ -8,7 +8,8 @@ const ENDPOINT = config.endpoint || "/";
 
 let monitor_file = null;
 
-class CustomException {
+// a custom exception used when validating the config
+class APIException {
 
     constructor(name, reason) {
         this.name = name;
@@ -18,25 +19,25 @@ class CustomException {
 
 function validateConfig() {
     if (!Number.isInteger(PORT)) {
-        throw new CustomException("INVALID TYPE", "Value is not of type integer.");
+        throw new APIException("INVALID TYPE", "Value is not of type integer.");
     }
     if (!(PORT >= 20000 && PORT <= 40000)) {
         // safe ports from source https://www.ietf.org/rfc/rfc1700.txt
-        throw new CustomException("INVALID PORT", "Value is not in range of 20000 - 40000.");
+        throw new APIException("INVALID PORT", "Value is not in range of 20000 - 40000.");
     }
 
     try {
         monitor_file = require(config.filepath);
     }
     catch (error) {
-        throw new CustomException("INVALID FILEPATH", "Can not find the provided file.");
+        throw new APIException("INVALID FILEPATH", "Can not find the provided file.");
     }
 
     return true;
 }
 
 function main() {
-    console.log("File monitor API developed by github.com/paranoiaz\n")
+    console.log("A simply fast and easy to use File monitor API")
     console.log(`Config overview in JSON format, check the fields;\n${JSON.stringify(config)}`);
     console.log(`
                     Machine: ${os.hostname}
@@ -46,7 +47,7 @@ function main() {
 
     const KEYMANAGER = new APIKeyManager(16);
 
-    // generate keys valid for 1 session
+    // generate keys valid for a single session
     if (config.keys) {
         KEYMANAGER.generateMultipleKeys(10);
         console.log("The single session API keys have been generated:");
